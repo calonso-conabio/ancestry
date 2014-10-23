@@ -14,6 +14,10 @@ class << ActiveRecord::Base
     # Include dynamic class methods
     extend Ancestry::ClassMethods
 
+    # Avoid the ancestry behavoir if anyone wants to update manually
+    cattr_accessor :avoid_ancestry
+    self.avoid_ancestry = options[:avoid_ancestry] || false
+    
     # Create ancestry column accessor and set to option or default
     cattr_accessor :ancestry_column
     self.ancestry_column = options[:ancestry_column] || :ancestry
@@ -47,10 +51,10 @@ class << ActiveRecord::Base
     scope :ordered_by_ancestry_and, lambda { |order| reorder("(case when #{table_name}.#{ancestry_column} is null then 0 else 1 end), #{table_name}.#{ancestry_column}, #{order}") }
 
     # Update descendants with new ancestry before save
-    before_save :update_descendants_with_new_ancestry
+    before_save :update_descendants_with_new_ancestry, :unless => :avoid_ancestry
 
     # Apply orphan strategy before destroy
-    before_destroy :apply_orphan_strategy
+    before_destroy :apply_orphan_strategy, :unless => :avoid_ancestry
 
     # Create ancestry column accessor and set to option or default
     if options[:cache_depth]
