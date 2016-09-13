@@ -112,3 +112,4 @@ are added. The patch version is bumped when bugs are fixed.
 * Subtree movement
 * Named scopes
 * Validations
+B

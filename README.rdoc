@@ -278,3 +278,5 @@ I will try to keep Ancestry up to date with changing versions of Rails and Ruby 
 Question? Bug report? Faulty/incomplete documentation? Feature request? Please post an issue on 'http://github.com/stefankroes/ancestry/issues'. Make sure you have read the documentation and you have included tests and documentation with any pull request.
 
 Copyright (c) 2013 Stefan Kroes, released under the MIT license
+
+ter
