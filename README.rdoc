@@ -279,4 +279,4 @@ Question? Bug report? Faulty/incomplete documentation? Feature request? Please p
 
 Copyright (c) 2013 Stefan Kroes, released under the MIT license
 
-ter
+ter, version 2
